@@ -13,7 +13,11 @@ variable "common_tags" {
         Terraform = true
     }
 }
-
+variable "tags" {
+  default = {
+    Component = "app-alb"
+  }
+}
 variable zone_name {
     default = "bhargavdevops.online"
 }
