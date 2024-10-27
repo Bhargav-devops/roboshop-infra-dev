@@ -17,7 +17,7 @@ resource "aws_lb_target_group" "catalogue" {
 
 module "catalogue" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  name = "${local.ec2_name}-${var.tags.Component}-ami"
+  name = "${local.name}-${var.tags.Component}-ami"
   ami = data.aws_ami.centos8.id
   instance_type          = "t2.micro"
   vpc_security_group_ids = [data.aws_ssm_parameter.catalogue_sg_id.value]
@@ -141,6 +141,7 @@ resource "aws_autoscaling_group" "catalogue" {
 
 resource "aws_lb_listener_rule" "catalogue" {
   listener_arn = data.aws_ssm_parameter.app_alb_listener_arn.value
+  # listener_arn = "${local.name}-${var.tags.Component}"
   priority     = 10
 
   action {
@@ -166,6 +167,6 @@ resource "aws_autoscaling_policy" "catalogue" {
       predefined_metric_type = "ASGAverageCPUUtilization"
     }
 
-    target_value = 5.0
+    target_value = 3.0
   }
 }
