@@ -118,7 +118,7 @@ module "app_alb" {
   #sg_ingress_rules = var.mongodb_sg_ingress_rules
 }
 
-module "app_alb" {
+module "web_alb" {
   source         = "../../terraform-aws-security-group"
   project_name   = var.project_name
   environment    = var.environment
