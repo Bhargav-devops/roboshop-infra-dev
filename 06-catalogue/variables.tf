@@ -15,7 +15,7 @@ variable "common_tags" {
 }
 variable "tags" {
   default = {
-    Component = "app-alb"
+    Component = "catalogue"
   }
 }
 variable zone_name {
