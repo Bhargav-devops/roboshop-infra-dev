@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket = "bhargav-bucket-dev"
-    key    = "app_alb"
+    key    = "catalogue"
     region = "us-east-1"
     dynamodb_table = "bhargav-locking-dev"
   }
